@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Engine.ConsoleMannager
+namespace Engine.ConsoleManager
 {
-    public class C_Mannager
+    public class C_Manager
     {
         public static bool GetInput(ConsoleKey key)
         {

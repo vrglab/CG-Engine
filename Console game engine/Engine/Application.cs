@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Engine.ConsoleMannager;
+using Engine.ConsoleManager;
 
 namespace Engine
 {
@@ -15,12 +15,12 @@ namespace Engine
         public static void Start(string appName)
         {
             Console.OutputEncoding = ActivEncoding;
-            Console.Title = appName;
-
-            while (!C_Mannager.GetInput(ConsoleKey.Escape))
+            
+            while (!C_Manager.GetInput(ConsoleKey.Escape))
             {
+                Console.Title = appName;
                 //TODO: remove this code as is test code
-                if (C_Mannager.GetInput(ConsoleKey.W))
+                if (C_Manager.GetInput(ConsoleKey.W))
                 {
                     Console.WriteLine("w was pressed");
                 }
