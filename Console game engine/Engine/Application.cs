@@ -10,6 +10,7 @@ namespace Engine
     public class Application
     {
         public static Encoding ActivEncoding { get => Encoding.UTF8; }
+        public static ConsoleColor DefaultColor { get => ConsoleColor.White; }
 
         public static void Start(string appName)
         {
@@ -18,6 +19,7 @@ namespace Engine
 
             while (!C_Mannager.GetInput(ConsoleKey.Escape))
             {
+                //TODO: remove this code as is test code
                 if (C_Mannager.GetInput(ConsoleKey.W))
                 {
                     Console.WriteLine("w was pressed");
