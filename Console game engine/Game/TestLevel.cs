@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Engine.Level_Management;
+using Engine.Mathmatics;
+using Console = Engine.ConsoleManager.Console;
 
 namespace Game
 {
@@ -12,7 +14,18 @@ namespace Game
         public override void Load()
         {
             base.Load();
-            Console.WriteLine("Testing level");
+            Console.WriteLine(1235, new Vector2(10,3));
+        }
+
+        public override void Update()
+        {
+            base.Update();
+
+            if (Console.GetInput(ConsoleKey.W))
+            {
+                Console.Remove(new Vector2(10, 3));
+                Console.WriteLine(1236, new Vector2(10, 3));
+            }
         }
     }
 }

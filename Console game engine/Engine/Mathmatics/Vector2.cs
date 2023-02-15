@@ -8,19 +8,19 @@ namespace Engine.Mathmatics
 {
     public class Vector2 : IEquatable<Vector2>
     {
-        public float x { get => X; }
-        public float y { get => Y; }
+        public int x { get => X; }
+        public int y { get => Y; }
 
-        private float X = 0, Y = 0;
+        private int X = 0, Y = 0;
 
-        public Vector2(float x = 0, float y = 0)
+        public Vector2(int x = 0, int y = 0)
         {
             X = x;
             Y = y;
         }
 
 
-        public static Vector2 Lerp(Vector2 a, Vector2 b, float t)
+        public static Vector2 Lerp(Vector2 a, Vector2 b, int t)
         {
             return a * t + b * (1.0f - t);
         }
@@ -121,44 +121,44 @@ namespace Engine.Mathmatics
 
         public static Vector2 operator +(float left, Vector2 right)
         {
-            return new Vector2(left + right.x, left + right.y);
+            return new Vector2((int)left + right.x, (int)left + right.y);
         }
         public static Vector2 operator -(float left, Vector2 right)
         {
-            return new Vector2(left - right.x, left - right.y);
+            return new Vector2((int)left - right.x, (int)left - right.y);
         }
         public static Vector2 operator *(float left, Vector2 right)
         {
-            return new Vector2(left * right.x, left * right.y);
+            return new Vector2((int)left * right.x, (int)left * right.y);
         }
         public static Vector2 operator /(float left, Vector2 right)
         {
-            return new Vector2(left / right.x, left / right.y);
+            return new Vector2((int)left / right.x, (int)left / right.y);
         }
         public static Vector2 operator %(float left, Vector2 right)
         {
-            return new Vector2(left % right.x, left % right.y);
+            return new Vector2((int)left % right.x, (int)left % right.y);
         }
 
         public static Vector2 operator +(Vector2 left, float right)
         {
-            return new Vector2(left.x + right, left.y + right);
+            return new Vector2(left.x + (int)right, left.y + (int)right);
         }
         public static Vector2 operator -(Vector2 left, float right)
         {
-            return new Vector2(left.x - right, left.y - right);
+            return new Vector2(left.x - (int)right, left.y - (int)right);
         }
         public static Vector2 operator *(Vector2 left, float right)
         {
-            return new Vector2(left.x * right, left.y * right);
+            return new Vector2(left.x * (int)right, left.y * (int)right);
         }
         public static Vector2 operator /(Vector2 left, float right)
         {
-            return new Vector2(left.x / right, left.y / right);
+            return new Vector2(left.x / (int)right, left.y / (int)right);
         }
         public static Vector2 operator %(Vector2 left, float right)
         {
-            return new Vector2(left.x % right, left.y % right);
+            return new Vector2(left.x % (int)right, left.y % (int)right);
         }
 
         public static Vector2 operator +(int left, Vector2 right)
