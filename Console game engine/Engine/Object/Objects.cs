@@ -75,8 +75,43 @@ namespace Engine.Object
 
     public abstract class GameObject : Object
     {
-        public abstract void Load();
-        public abstract void Awake();
-        public abstract void Update();
+        private List<Component> RegisteredComponents = new List<Component>();
+
+        public virtual void Load()
+        {
+            foreach (var comp in RegisteredComponents)
+            {
+                comp.Load();
+            }
+        }
+        public virtual void Awake()
+        {
+            foreach (var comp in RegisteredComponents)
+            {
+                comp.Awake();
+            }
+        }
+        public virtual void Update()
+        {
+            foreach (var comp in RegisteredComponents)
+            {
+                comp.Update();
+            }
+        }
+        public virtual void Render()
+        {
+            foreach (var comp in RegisteredComponents)
+            {
+                comp.Render();
+            }
+        }
+
+        protected void RegisterGameObject(Component component)
+        {
+            if (!RegisteredComponents.Contains(component))
+            {
+                RegisteredComponents.Add(component);
+            }
+        }
     }
 }

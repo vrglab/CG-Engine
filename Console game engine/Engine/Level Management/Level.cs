@@ -37,6 +37,14 @@ namespace Engine.Level_Management
             }
         }
 
+        public virtual void Render()
+        {
+            foreach (var obj in RegisteredGameObjects)
+            {
+                obj.Render();
+            }
+        }
+
         public virtual void Unload()
         {
             
