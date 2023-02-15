@@ -13,7 +13,7 @@ namespace Engine.Object.PremadeComponents
         public int Charachter { get; set; } = 65533;
         public ConsoleColor Color { get; set; } = ConsoleColor.White;
 
-        private Vector2 lastpos = new Vector2(0, 0);
+        private Vector2 lastpos;
         private Vector2 Latelastpos;
 
         private bool render;
@@ -25,7 +25,8 @@ namespace Engine.Object.PremadeComponents
 
         public override void Awake()
         {
-            Console.Write(Charachter, Color, Vector2.Zero);
+            lastpos = gameobject.transform.Position;
+            Console.Write(Charachter, Color, lastpos);
         }
 
         public override void Update()
