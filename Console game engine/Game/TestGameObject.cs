@@ -16,11 +16,11 @@ namespace Game
         {
             AddComponant<CharacterRenderer>();
 
-            AddComponant(new AudioPlayer("Removed for Privicy reasons")
+            /*AddComponant(new AudioPlayer("Audio file")
             {
-                gameobject = this,
-                StartPlayingAtAwake = false
-            });
+                this gameobject line is required when initiating a component like this
+                gameobject = this
+            });*/
         }
 
         public override void Update()
