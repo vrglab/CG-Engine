@@ -98,5 +98,11 @@ namespace Engine.ConsoleManager
             Remove(RemovecharAt);
             WriteLine(Char, color, addCharAt);
         }
+
+        public static void Replace(int Char, Vector2 RemovecharAt, Vector2 addCharAt)
+        {
+            Remove(RemovecharAt);
+            WriteLine(Char, addCharAt);
+        }
     }
 }

@@ -24,8 +24,7 @@ namespace Game
 
             if (Console.GetInput(ConsoleKey.W))
             {
-                Console.Remove(new Vector2(10, 3));
-                Console.WriteLine(1236, new Vector2(10, 3));
+                Console.Replace(1236, new Vector2(10, 3));
             }
         }
     }
