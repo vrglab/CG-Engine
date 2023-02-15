@@ -13,7 +13,7 @@ namespace Engine.Level_Management
 
         private List<GameObject> RegisteredGameObjects = new List<GameObject>();
 
-        public void Load()
+        public virtual void Load()
         {
             foreach (var obj in RegisteredGameObjects)
             {
@@ -21,21 +21,23 @@ namespace Engine.Level_Management
             }
         }
 
-        public void Awake()
+        public virtual void Awake()
         {
             foreach (var obj in RegisteredGameObjects)
             {
                 obj.Awake();
             }
         }
-        public void Update()
+
+        public virtual void Update()
         {
             foreach (var obj in RegisteredGameObjects)
             {
                 obj.Update();
             }
         }
-        public void Unload()
+
+        public virtual void Unload()
         {
             
         }
