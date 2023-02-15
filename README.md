@@ -1,4 +1,4 @@
-[![License](https://img.shields.io/github/license/vrglab/Console-game-engine)](github.com/vrglab/Console-game-engine/blob/master/LICENSE) [![Releases](https://img.shields.io/github/v/release/vrglab/Console-game-engine)](https://github.com/vrglab/Console-game-engine/releases) [![Issues](https://img.shields.io/bitbucket/issues/vrglab/Console-game-engine)](https://github.com/vrglab/Console-game-engine/issues)
+[![License](https://img.shields.io/github/license/vrglab/CG-Engine)](LICENSE) [![Releases](https://img.shields.io/github/v/release/vrglab/CG-Engine)](https://github.com/vrglab/CG-Engine/releases) [![Issues](https://img.shields.io/bitbucket/issues/vrglab/CG-Engine)](https://github.com/vrglab/CG-Engine/issues)
 # CG Engine
 CG Engine is a open source C# Console based game engine designed to make console game's by [Arad Bozorgmehr (Vrglab)](https://twitter.com/arad_bozorgmehr) 
 
