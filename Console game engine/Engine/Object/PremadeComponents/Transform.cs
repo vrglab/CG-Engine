@@ -11,7 +11,7 @@ namespace Engine.Object.PremadeComponents
     {
         public Vector2 Position { get; set; }
 
-        public Transform(GameObject parentOBJ) : base(parentOBJ)
+        public Transform()
         {
             Position = Vector2.Zero;
         }
