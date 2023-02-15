@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Engine.ConsoleManager;
 using Engine.Level_Management;
+using Console = Engine.ConsoleManager.Console;
 
 namespace Engine
 {
@@ -17,17 +18,17 @@ namespace Engine
 
         public static void Start(string appName, Level startingLevel)
         {
-            Console.OutputEncoding = ActivEncoding;
+            System.Console.OutputEncoding = ActivEncoding;
             LevelManager = new LevelManager(startingLevel);
 
 
-            while (!C_Manager.GetInput(ConsoleKey.Escape))
+            while (!Console.GetInput(ConsoleKey.Escape))
             {
-                Console.Title = appName;
+                System.Console.Title = appName;
                 //TODO: remove this code as is test code
-                if (C_Manager.GetInput(ConsoleKey.W))
+                if (Console.GetInput(ConsoleKey.W))
                 {
-                    Console.WriteLine("w was pressed");
+                    System.Console.WriteLine("w was pressed");
                 }
             }
         }
