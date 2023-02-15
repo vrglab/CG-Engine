@@ -45,8 +45,7 @@ namespace Engine.Object.PremadeComponents
         {
             if (render)
             {
-                Console.Remove(Latelastpos-1);
-                Console.Write(Charachter, Color, lastpos);
+                Console.Replace(Charachter, Color, Latelastpos -1, lastpos);
             }
         }
     }

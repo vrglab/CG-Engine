@@ -13,8 +13,7 @@ namespace Engine.ConsoleManager
         {
             return (System.Console.KeyAvailable && System.Console.ReadKey(true).Key == key);
         } 
-
-        //TODO: implement proper unicode drawing to the console
+        
         public static void Write(int code)
         {
             char charcater = (char)code;
@@ -45,8 +44,7 @@ namespace Engine.ConsoleManager
             System.Console.Write(charcater);
             System.Console.ResetColor();
         }
-
-
+        
         public static void WriteLine(int code)
         {
             char charcater = (char)code;
@@ -85,16 +83,20 @@ namespace Engine.ConsoleManager
 
         public static void Replace(int Char, Vector2 charAt)
         {
-            System.Console.SetCursorPosition(charAt.x, charAt.y);
-            System.Console.WriteLine(Char);
+            Remove(charAt);
+            WriteLine(Char, charAt);
         }
 
         public static void Replace(int Char, ConsoleColor color, Vector2 charAt)
         {
-            System.Console.SetCursorPosition(charAt.x, charAt.y);
-            System.Console.ForegroundColor = color;
-            System.Console.WriteLine(Char);
-            System.Console.ResetColor();
+            Remove(charAt);
+            WriteLine(Char, color, charAt);
+        }
+
+        public static void Replace(int Char, ConsoleColor color, Vector2 RemovecharAt, Vector2 addCharAt)
+        {
+            Remove(RemovecharAt);
+            WriteLine(Char, color, addCharAt);
         }
     }
 }

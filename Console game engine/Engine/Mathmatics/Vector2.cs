@@ -25,7 +25,6 @@ namespace Engine.Mathmatics
             return a * t + b * (1.0f - t);
         }
 
-
         public bool Equals(Vector2 other)
         {
             if (x == other.x && y == other.y)
@@ -50,8 +49,7 @@ namespace Engine.Mathmatics
             return x + "/" + y;
         }
 
-
-
+        
         public static bool operator ==(Vector2 left, Vector2 right)
         {
             return Equals(left, right);
