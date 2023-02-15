@@ -45,7 +45,14 @@ namespace Engine.Object.PremadeComponents
         {
             if (render)
             {
-                Console.Replace(Charachter, Color, Latelastpos -1, lastpos);
+                if (gameobject.transform.Position.x == 0 || gameobject.transform.Position.y == 0)
+                {
+                    Console.Replace(Charachter, Color, Latelastpos - 1, lastpos);
+                }
+                else
+                {
+                    Console.Replace(Charachter, Color, new Vector2(Latelastpos.x - 1, Latelastpos.y), lastpos);
+                }
             }
         }
     }
