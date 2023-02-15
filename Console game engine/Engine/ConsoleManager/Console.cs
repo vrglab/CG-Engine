@@ -79,8 +79,22 @@ namespace Engine.ConsoleManager
 
         public static void Remove(Vector2 charAt)
         {
-            System.Console.SetCursorPosition(charAt.x, charAt.y);
+            System.Console.SetCursorPosition((charAt.x >= 0) ? charAt.x : 0, (charAt.y >= 0) ? charAt.y : 0);
             System.Console.WriteLine(" ");
+        }
+
+        public static void Replace(int Char, Vector2 charAt)
+        {
+            System.Console.SetCursorPosition(charAt.x, charAt.y);
+            System.Console.WriteLine(Char);
+        }
+
+        public static void Replace(int Char, ConsoleColor color, Vector2 charAt)
+        {
+            System.Console.SetCursorPosition(charAt.x, charAt.y);
+            System.Console.ForegroundColor = color;
+            System.Console.WriteLine(Char);
+            System.Console.ResetColor();
         }
     }
 }

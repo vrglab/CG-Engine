@@ -25,6 +25,7 @@ namespace Engine
                 System.Console.Title = appName;
 
                 LevelManager.GetCurentLevel().Update();
+                LevelManager.GetCurentLevel().Render();
             }
             LevelManager.GetCurentLevel().Unload();
         }
