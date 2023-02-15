@@ -19,7 +19,7 @@ namespace Engine.Mathmatics
             Y = y;
         }
 
-
+        public static Vector2 Zero {get => new Vector2(0, 0);}
         public static Vector2 Lerp(Vector2 a, Vector2 b, int t)
         {
             return a * t + b * (1.0f - t);

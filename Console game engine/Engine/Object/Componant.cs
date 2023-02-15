@@ -8,12 +8,7 @@ namespace Engine.Object
 {
     public abstract class Component : Object
     {
-        public GameObject gameObject { get; private set; }
-
-        protected Component(GameObject parentOBJ)
-        {
-            gameObject = parentOBJ;
-        }
+        public GameObject? gameobject { get; init; }
 
         public abstract void Load();
         public abstract void Awake();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Engine.Object.PremadeComponents;
 
 namespace Engine.Object
 {
@@ -77,6 +78,13 @@ namespace Engine.Object
     {
         private List<Component> RegisteredComponents = new List<Component>();
 
+        public Transform transform { get; private set; }
+
+        protected GameObject()
+        {
+            transform = AddComponant<Transform>();
+        }
+
         public virtual void Load()
         {
             foreach (var comp in RegisteredComponents)
@@ -106,12 +114,60 @@ namespace Engine.Object
             }
         }
 
-        protected void RegisterComponent(Component component)
+        public t AddComponant<t>() where t : Component, new()
         {
-            if (!RegisteredComponents.Contains(component))
+            var Refrenace = new t
             {
-                RegisteredComponents.Add(component);
+                gameobject = this
+            };
+            Refrenace.Awake();
+            RegisteredComponents.Add(Refrenace);
+            return Refrenace;
+        }
+
+        public t AddComponant<t>(t Refrenace) where t : Component, new()
+        {
+            Refrenace.Awake();
+            RegisteredComponents.Add(Refrenace);
+            return Refrenace;
+        }
+
+        public t? GetComponant<t>() where t : Component
+        {
+            foreach (var item in RegisteredComponents)
+            {
+                if (item is t)
+                {
+                    return item as t;
+                }
             }
+            return default;
+        }
+
+        public t[] GetComponants<t>() where t : Component
+        {
+            List<t> list = new List<t>();
+            foreach (var item in RegisteredComponents)
+            {
+                if (item is t)
+                {
+                    list.Add(item as t);
+                }
+            }
+            return list.ToArray();
+        }
+
+        public void RemoveComponant<t>() where t : Component
+        {
+            Component removed = null;
+            foreach (var item in RegisteredComponents)
+            {
+                if (item is t)
+                {
+                    removed = item;
+                }
+            }
+            RegisteredComponents.Remove(removed);
         }
     }
 }
