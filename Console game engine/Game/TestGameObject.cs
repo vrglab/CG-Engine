@@ -30,6 +30,19 @@ namespace Game
             {
                 transform.Position = new Vector2(transform.Position.x + 1, transform.Position.y);
             }
+            if (Console.GetInput(ConsoleKey.A))
+            {
+                transform.Position = new Vector2(transform.Position.x - 1, transform.Position.y);
+            }
+
+            if (Console.GetInput(ConsoleKey.W))
+            {
+                transform.Position = new Vector2(transform.Position.x, transform.Position.y - 1);
+            }
+            if (Console.GetInput(ConsoleKey.S))
+            {
+                transform.Position = new Vector2(transform.Position.x, transform.Position.y + 1);
+            }
         }
     }
 }
