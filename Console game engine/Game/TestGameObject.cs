@@ -16,9 +16,10 @@ namespace Game
         {
             AddComponant<CharacterRenderer>();
 
-            AddComponant(new AudioPlayer("Removed for Privacy reasons")
+            AddComponant(new AudioPlayer("Removed for Privicy reasons")
             {
-                gameobject = this
+                gameobject = this,
+                StartPlayingAtAwake = false
             });
         }
 
