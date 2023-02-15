@@ -106,7 +106,7 @@ namespace Engine.Object
             }
         }
 
-        protected void RegisterGameObject(Component component)
+        protected void RegisterComponent(Component component)
         {
             if (!RegisteredComponents.Contains(component))
             {
