@@ -125,7 +125,7 @@ namespace Engine.Object
             return Refrenace;
         }
 
-        public t AddComponant<t>(t Refrenace) where t : Component, new()
+        public t AddComponant<t>(t Refrenace) where t : Component
         {
             Refrenace.Awake();
             RegisteredComponents.Add(Refrenace);

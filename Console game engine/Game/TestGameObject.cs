@@ -15,6 +15,11 @@ namespace Game
         public TestGameObject()
         {
             AddComponant<CharacterRenderer>();
+
+            AddComponant(new AudioPlayer("Removed for Privacy reasons")
+            {
+                gameobject = this
+            });
         }
 
         public override void Update()
