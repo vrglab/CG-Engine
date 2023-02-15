@@ -14,6 +14,7 @@ namespace Game
         public override void Load()
         {
             base.Load();
+            RegisterGameObject(new TestGameObject());
             Console.WriteLine(1235, new Vector2(10,3));
         }
 
