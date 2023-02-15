@@ -13,25 +13,26 @@ namespace Engine.Object.PremadeComponents
         public int Charachter { get; set; } = 65533;
         public ConsoleColor Color { get; set; } = ConsoleColor.White;
 
-        private Vector2 lastpos = new Vector2(1245677889, 1245677889);
+        private Vector2 lastpos = new Vector2(0, 0);
         private Vector2 Latelastpos;
 
         private bool render;
 
         public override void Load()
         {
-            Console.Write(Charachter, Color, gameobject.transform.Position);
+            
         }
 
         public override void Awake()
         {
+            Console.Write(Charachter, Color, Vector2.Zero);
         }
 
         public override void Update()
         {
             if (gameobject.transform.Position != lastpos)
             {
-                Latelastpos = gameobject.transform.Position;
+                Latelastpos = lastpos;
                 render = true;
             }
             else
@@ -45,14 +46,7 @@ namespace Engine.Object.PremadeComponents
         {
             if (render)
             {
-                if (gameobject.transform.Position.x == 0 || gameobject.transform.Position.y == 0)
-                {
-                    Console.Replace(Charachter, Color, Latelastpos - 1, lastpos);
-                }
-                else
-                {
-                    Console.Replace(Charachter, Color, new Vector2(Latelastpos.x - 1, Latelastpos.y), lastpos);
-                }
+                Console.Replace(Charachter, Color, Latelastpos, lastpos);
             }
         }
     }
