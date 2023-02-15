@@ -6,7 +6,7 @@ CG Engine is a open source C# Console based game engine designed to make console
 * Object system
   * Game Objects
   * Components
-    * Audio system (NAdudio)
+    * Audio system (NAudio)
 * UTF16 based Character rendering
 * Terminal based Cordinate system
 * Level management system
