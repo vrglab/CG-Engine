@@ -18,23 +18,5 @@ namespace Game
             obj.transform.Position = new Vector2(6, 8);
             AddGameObject(obj);
         }
-
-
-        public override void Load()
-        {
-            base.Load();
-            
-            Console.WriteLine(1235, new Vector2(10,3));
-        }
-
-        public override void Update()
-        {
-            base.Update();
-
-            if (Console.GetInput(ConsoleKey.W))
-            {
-                Console.Replace(1236, new Vector2(10, 3));
-            }
-        }
     }
 }
