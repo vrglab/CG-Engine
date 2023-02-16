@@ -76,11 +76,6 @@ namespace Engine.ConsoleManager
             System.Console.ResetColor();
         }
 
-        public static void Remove(Vector2 charAt)
-        {
-            System.Console.SetCursorPosition((charAt.x >= 0) ? charAt.x : 0, (charAt.y >= 0) ? charAt.y : 0);
-            System.Console.WriteLine(" ");
-        }
 
         public static void Replace(int Char, Vector2 charAt)
         {
@@ -183,6 +178,14 @@ namespace Engine.ConsoleManager
         {
             Remove(RemovecharAt);
             WriteLine(Char, addCharAt);
+        }
+
+        //Utility
+
+        public static void Remove(Vector2 charAt)
+        {
+            System.Console.SetCursorPosition((charAt.x >= 0) ? charAt.x : 0, (charAt.y >= 0) ? charAt.y : 0);
+            System.Console.WriteLine(" ");
         }
     }
 }
