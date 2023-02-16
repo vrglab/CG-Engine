@@ -50,12 +50,60 @@ namespace Engine.LevelManagement
             
         }
 
-        protected void RegisterGameObject(GameObject gameObject)
+        public t AddGameObject<t>() where t : GameObject, new()
         {
-            if (!RegisteredGameObjects.Contains(gameObject))
+            var Refrenace = new t();
+            Refrenace.Load();
+            RegisteredGameObjects.Add(Refrenace);
+            Refrenace.Awake();
+            return Refrenace;
+        }
+
+        public t AddGameObject<t>(t Refrenace) where t : GameObject
+        {
+            Refrenace.Load();
+            RegisteredGameObjects.Add(Refrenace);
+            Refrenace.Awake();
+            return Refrenace;
+        }
+
+        public t? GetGameObject<t>() where t : GameObject
+        {
+            foreach (var item in RegisteredGameObjects)
             {
-                RegisteredGameObjects.Add(gameObject);
+                if (item is t)
+                {
+                    return item as t;
+                }
             }
+            return default;
+        }
+
+        public t[] GetAllGameObject<t>() where t : GameObject
+        {
+            List<t> list = new List<t>();
+            foreach (var item in RegisteredGameObjects)
+            {
+                if (item is t)
+                {
+                    list.Add(item as t);
+                }
+            }
+            return list.ToArray();
+        }
+
+        public void RemoveGameObject<t>() where t : GameObject
+        {
+            GameObject removed = null;
+            foreach (var item in RegisteredGameObjects)
+            {
+                if (item is t)
+                {
+                    removed = item;
+                }
+            }
+            RegisteredGameObjects.Remove(removed);
         }
     }
 }
+

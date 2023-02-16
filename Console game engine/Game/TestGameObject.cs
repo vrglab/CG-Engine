@@ -14,9 +14,9 @@ namespace Game
     {
         public TestGameObject()
         {
-            AddComponant<CharacterRenderer>();
+            AddComponent<CharacterRenderer>();
 
-            /*AddComponant(new AudioPlayer("Audio file")
+            /*AddComponent(new AudioPlayer("Audio file")
             {
                 this gameobject line is required when initiating a component like this
                 gameobject = this

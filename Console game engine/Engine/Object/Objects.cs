@@ -82,22 +82,16 @@ namespace Engine.Object
 
         protected GameObject()
         {
-            transform = AddComponant<Transform>();
+            transform = AddComponent<Transform>();
         }
 
         public virtual void Load()
         {
-            foreach (var comp in RegisteredComponents)
-            {
-                comp.Load();
-            }
+
         }
         public virtual void Awake()
         {
-            foreach (var comp in RegisteredComponents)
-            {
-                comp.Awake();
-            }
+
         }
         public virtual void Update()
         {
@@ -114,25 +108,27 @@ namespace Engine.Object
             }
         }
 
-        public t AddComponant<t>() where t : Component, new()
+        public t AddComponent<t>() where t : Component, new()
         {
             var Refrenace = new t
             {
                 gameobject = this
             };
-            Refrenace.Awake();
+            Refrenace.Load();
             RegisteredComponents.Add(Refrenace);
+            Refrenace.Awake();
             return Refrenace;
         }
 
-        public t AddComponant<t>(t Refrenace) where t : Component
+        public t AddComponent<t>(t Refrenace) where t : Component
         {
-            Refrenace.Awake();
+            Refrenace.Load();
             RegisteredComponents.Add(Refrenace);
+            Refrenace.Awake();
             return Refrenace;
         }
 
-        public t? GetComponant<t>() where t : Component
+        public t? GetComponent<t>() where t : Component
         {
             foreach (var item in RegisteredComponents)
             {
@@ -144,7 +140,7 @@ namespace Engine.Object
             return default;
         }
 
-        public t[] GetComponants<t>() where t : Component
+        public t[] GetComponents<t>() where t : Component
         {
             List<t> list = new List<t>();
             foreach (var item in RegisteredComponents)
@@ -157,7 +153,7 @@ namespace Engine.Object
             return list.ToArray();
         }
 
-        public void RemoveComponant<t>() where t : Component
+        public void RemoveComponent<t>() where t : Component
         {
             Component removed = null;
             foreach (var item in RegisteredComponents)
