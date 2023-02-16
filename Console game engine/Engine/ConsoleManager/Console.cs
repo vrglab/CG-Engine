@@ -9,10 +9,6 @@ namespace Engine.ConsoleManager
 {
     public class Console
     {
-        public static bool GetInput(ConsoleKey key)
-        {
-            return (System.Console.KeyAvailable && System.Console.ReadKey(true).Key == key);
-        } 
 
         //UTF-16 based char writers
         
@@ -185,6 +181,11 @@ namespace Engine.ConsoleManager
         {
             System.Console.SetCursorPosition((charAt.x >= 0) ? charAt.x : 0, (charAt.y >= 0) ? charAt.y : 0);
             System.Console.WriteLine(" ");
+        }
+
+        public static bool GetInput(ConsoleKey key)
+        {
+            return (System.Console.KeyAvailable && System.Console.ReadKey(true).Key == key);
         }
     }
 }

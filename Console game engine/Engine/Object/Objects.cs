@@ -78,21 +78,26 @@ namespace Engine.Object
     {
         private List<Component> RegisteredComponents = new List<Component>();
 
+
         public Transform transform { get; private set; }
+
 
         protected GameObject()
         {
             transform = AddComponent<Transform>();
         }
 
+
         public virtual void Load()
         {
 
         }
+
         public virtual void Awake()
         {
 
         }
+
         public virtual void Update()
         {
             foreach (var comp in RegisteredComponents)
@@ -100,6 +105,7 @@ namespace Engine.Object
                 comp.Update();
             }
         }
+
         public virtual void Render()
         {
             foreach (var comp in RegisteredComponents)
@@ -107,6 +113,7 @@ namespace Engine.Object
                 comp.Render();
             }
         }
+
 
         public t AddComponent<t>() where t : Component, new()
         {

@@ -11,7 +11,6 @@ namespace Game
 {
     public class TestLevel : Level
     {
-
         public TestLevel()
         {
             var obj = new TestGameObject();
