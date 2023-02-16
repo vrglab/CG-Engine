@@ -41,6 +41,17 @@ namespace Engine.Object.PremadeComponents
                 render = false;
             }
             lastpos = gameobject.transform.Position;
+
+            if (lastpos.x >= 0 && lastpos.x > System.Console.BufferWidth)
+            {
+                gameobject.transform.Position = new Vector2(0, gameobject.transform.Position.y);
+                lastpos = gameobject.transform.Position;
+            } else if (lastpos.y >= 0 && lastpos.y > System.Console.BufferHeight)
+            {
+                gameobject.transform.Position = new Vector2(gameobject.transform.Position.x, System.Console.BufferHeight);
+                lastpos = gameobject.transform.Position;
+            }
+
         }
 
         public override void Render()

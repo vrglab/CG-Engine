@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Engine.Mathmatics;
@@ -29,14 +30,14 @@ namespace Engine.ConsoleManager
         public static void Write(int code, Vector2 writAt)
         {
             char charcater = (char)code;
-            System.Console.SetCursorPosition(writAt.x, writAt.y);
+            SetCursorPos(writAt);
             System.Console.Write(charcater);
         }
 
         public static void Write(int code, ConsoleColor color, Vector2 writAt)
         {
             char charcater = (char)code;
-            System.Console.SetCursorPosition(writAt.x, writAt.y);
+            SetCursorPos(writAt);
             System.Console.ForegroundColor = color;
             System.Console.Write(charcater);
             System.Console.ResetColor();
@@ -59,14 +60,14 @@ namespace Engine.ConsoleManager
         public static void WriteLine(int code, Vector2 writAt)
         {
             char charcater = (char)code;
-            System.Console.SetCursorPosition(writAt.x, writAt.y);
+            SetCursorPos(writAt);
             System.Console.WriteLine(charcater);
         }
 
         public static void WriteLine(int code, ConsoleColor color, Vector2 writAt)
         {
             char charcater = (char)code;
-            System.Console.SetCursorPosition(writAt.x, writAt.y);
+            SetCursorPos(writAt);
             System.Console.ForegroundColor = color;
             System.Console.WriteLine(charcater);
             System.Console.ResetColor();
@@ -113,13 +114,13 @@ namespace Engine.ConsoleManager
 
         public static void Write(string code, Vector2 writAt)
         {
-            System.Console.SetCursorPosition(writAt.x, writAt.y);
+            SetCursorPos(writAt);
             System.Console.Write(code);
         }
 
         public static void Write(string code, ConsoleColor color, Vector2 writAt)
         {
-            System.Console.SetCursorPosition(writAt.x, writAt.y);
+            SetCursorPos(writAt);
             System.Console.ForegroundColor = color;
             System.Console.Write(code);
             System.Console.ResetColor();
@@ -139,13 +140,13 @@ namespace Engine.ConsoleManager
 
         public static void WriteLine(string code, Vector2 writAt)
         {
-            System.Console.SetCursorPosition(writAt.x, writAt.y);
+            SetCursorPos(writAt);
             System.Console.WriteLine(code);
         }
 
         public static void WriteLine(string code, ConsoleColor color, Vector2 writAt)
         {
-            System.Console.SetCursorPosition(writAt.x, writAt.y);
+            SetCursorPos(writAt);
             System.Console.ForegroundColor = color;
             System.Console.WriteLine(code);
             System.Console.ResetColor();
@@ -179,13 +180,18 @@ namespace Engine.ConsoleManager
 
         public static void Remove(Vector2 charAt)
         {
-            System.Console.SetCursorPosition((charAt.x >= 0) ? charAt.x : 0, (charAt.y >= 0) ? charAt.y : 0);
+            SetCursorPos(charAt);
             System.Console.WriteLine(" ");
         }
 
         public static bool GetInput(ConsoleKey key)
         {
             return (System.Console.KeyAvailable && System.Console.ReadKey(true).Key == key);
+        }
+
+        private static void SetCursorPos(Vector2 pos)
+        {
+            System.Console.SetCursorPosition((pos.x >= 0 && pos.x < System.Console.BufferWidth) ? pos.x : 0, (pos.y >= 0 && pos.y < System.Console.BufferHeight) ? pos.y : 0);
         }
     }
 }
