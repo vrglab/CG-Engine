@@ -76,7 +76,6 @@ namespace Engine.ConsoleManager
             System.Console.ResetColor();
         }
 
-
         public static void Replace(int Char, Vector2 charAt)
         {
             Remove(charAt);
