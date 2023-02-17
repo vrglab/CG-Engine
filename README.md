@@ -10,6 +10,7 @@ CG Engine is a open source C# Console based game engine designed to make console
 * UTF16 based Character rendering
 * Terminal based Cordinate system
 * Level management system
+* Dynamic Layered Rendering
 
 # Getting started
 To get started you can download the needed [DLL file](https://github.com/vrglab/Console-game-engine/releases)
