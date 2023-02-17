@@ -12,7 +12,7 @@ namespace Game
 
         public static void Main(string[] args)
         {
-            Application.Start("Testing app", new TestLevel());
+            Application.Start("Testing app", new TestLevel(),3);
         }
     }
 }

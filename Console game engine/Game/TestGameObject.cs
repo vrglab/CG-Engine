@@ -12,8 +12,9 @@ namespace Game
 {
     public class TestGameObject : GameObject
     {
-        public TestGameObject()
+        public override void Load()
         {
+            base.Load();
             AddComponent<CharacterRenderer>();
 
             /*AddComponent(new AudioPlayer("Audio file")

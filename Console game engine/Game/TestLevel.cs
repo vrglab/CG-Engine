@@ -11,11 +11,13 @@ namespace Game
 {
     public class TestLevel : Level
     {
-        public TestLevel()
+        public override void Load()
         {
+            base.Load();
             var obj = new TestGameObject();
             obj.transform.Position = new Vector2(6, 8);
             AddGameObject(obj);
+            Console.Write(12344, 1);
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using Engine.ConsoleManager.Layering;
 using Engine.Mathmatics;
 
 namespace Engine.ConsoleManager
@@ -16,15 +17,19 @@ namespace Engine.ConsoleManager
         public static void Write(int code)
         {
             char charcater = (char)code;
+            SetCursorPos(Vector2.Zero);
             System.Console.Write(charcater);
+            Application.LayerManager.PutInLayer(0, new DrawChar(code, String.Empty, Vector2.Zero, System.Console.ForegroundColor, 0));
         }
 
         public static void Write(int code, ConsoleColor color)
         {
             char charcater = (char)code;
+            SetCursorPos(Vector2.Zero);
             System.Console.ForegroundColor = color;
             System.Console.Write(charcater);
             System.Console.ResetColor();
+            Application.LayerManager.PutInLayer(0, new DrawChar(code, String.Empty, Vector2.Zero, color, 0));
         }
 
         public static void Write(int code, Vector2 writAt)
@@ -32,6 +37,7 @@ namespace Engine.ConsoleManager
             char charcater = (char)code;
             SetCursorPos(writAt);
             System.Console.Write(charcater);
+            Application.LayerManager.PutInLayer(0, new DrawChar(code, String.Empty, writAt, System.Console.ForegroundColor, 0));
         }
 
         public static void Write(int code, ConsoleColor color, Vector2 writAt)
@@ -41,20 +47,25 @@ namespace Engine.ConsoleManager
             System.Console.ForegroundColor = color;
             System.Console.Write(charcater);
             System.Console.ResetColor();
+            Application.LayerManager.PutInLayer(0, new DrawChar(code, String.Empty, writAt, color, 0));
         }
         
         public static void WriteLine(int code)
         {
             char charcater = (char)code;
+            SetCursorPos(Vector2.Zero);
             System.Console.WriteLine(charcater);
+            Application.LayerManager.PutInLayer(0, new DrawChar(code, String.Empty, Vector2.Zero, System.Console.ForegroundColor, 0));
         }
 
         public static void WriteLine(int code, ConsoleColor color)
         {
             char charcater = (char)code;
+            SetCursorPos(Vector2.Zero);
             System.Console.ForegroundColor = color;
             System.Console.WriteLine(charcater);
             System.Console.ResetColor();
+            Application.LayerManager.PutInLayer(0, new DrawChar(code, String.Empty, Vector2.Zero, color, 0));
         }
 
         public static void WriteLine(int code, Vector2 writAt)
@@ -62,6 +73,7 @@ namespace Engine.ConsoleManager
             char charcater = (char)code;
             SetCursorPos(writAt);
             System.Console.WriteLine(charcater);
+            Application.LayerManager.PutInLayer(0, new DrawChar(code, String.Empty, writAt, System.Console.ForegroundColor, 0));
         }
 
         public static void WriteLine(int code, ConsoleColor color, Vector2 writAt)
@@ -71,7 +83,92 @@ namespace Engine.ConsoleManager
             System.Console.ForegroundColor = color;
             System.Console.WriteLine(charcater);
             System.Console.ResetColor();
+            Application.LayerManager.PutInLayer(0, new DrawChar(code, String.Empty, writAt, color, 0));
         }
+
+
+        public static void Write(int code, int layer)
+        {
+            char charcater = (char)code;
+            SetCursorPos(Vector2.Zero);
+            System.Console.Write(charcater);
+            Application.LayerManager.PutInLayer(layer, new DrawChar(code, String.Empty, Vector2.Zero, System.Console.ForegroundColor, layer));
+        }
+
+        public static void Write(int code, ConsoleColor color, int layer)
+        {
+            char charcater = (char)code;
+            SetCursorPos(Vector2.Zero);
+            System.Console.ForegroundColor = color;
+            System.Console.Write(charcater);
+            System.Console.ResetColor();
+            Application.LayerManager.PutInLayer(layer, new DrawChar(code, String.Empty, Vector2.Zero, color, layer));
+        }
+
+        public static void Write(int code, Vector2 writAt, int layer)
+        {
+            char charcater = (char)code;
+            SetCursorPos(writAt);
+            System.Console.Write(charcater);
+            Application.LayerManager.PutInLayer(layer, new DrawChar(code, String.Empty, writAt, System.Console.ForegroundColor, layer));
+        }
+
+        public static void Write(int code, ConsoleColor color, Vector2 writAt, int layer)
+        {
+            char charcater = (char)code;
+            SetCursorPos(writAt);
+            System.Console.ForegroundColor = color;
+            System.Console.Write(charcater);
+            System.Console.ResetColor();
+            Application.LayerManager.PutInLayer(layer, new DrawChar(code, String.Empty, writAt, color, layer));
+        }
+
+        public static void WriteLine(int code, int layer)
+        {
+            char charcater = (char)code;
+            SetCursorPos(Vector2.Zero);
+            System.Console.WriteLine(charcater);
+            Application.LayerManager.PutInLayer(layer, new DrawChar(code, String.Empty, Vector2.Zero, System.Console.ForegroundColor, layer));
+        }
+
+        public static void WriteLine(int code, ConsoleColor color, int layer)
+        {
+            char charcater = (char)code;
+            SetCursorPos(Vector2.Zero);
+            System.Console.ForegroundColor = color;
+            System.Console.WriteLine(charcater);
+            System.Console.ResetColor();
+            Application.LayerManager.PutInLayer(layer, new DrawChar(code, String.Empty, Vector2.Zero, color, layer));
+        }
+
+        public static void WriteLine(int code, Vector2 writAt, int layer)
+        {
+            char charcater = (char)code;
+            SetCursorPos(writAt);
+            System.Console.WriteLine(charcater);
+            Application.LayerManager.PutInLayer(layer, new DrawChar(code, String.Empty, writAt, System.Console.ForegroundColor, layer));
+        }
+
+        public static void WriteLine(int code, ConsoleColor color, Vector2 writAt, int layer)
+        {
+            char charcater = (char)code;
+            SetCursorPos(writAt);
+            System.Console.ForegroundColor = color;
+            System.Console.WriteLine(charcater);
+            System.Console.ResetColor();
+            Application.LayerManager.PutInLayer(layer, new DrawChar(code, String.Empty, writAt, color, layer));
+        }
+
+
+        public static void UnLoggedManualWrite(int code, ConsoleColor color, Vector2 writAt)
+        {
+            char charcater = (char)code;
+            SetCursorPos(writAt);
+            System.Console.ForegroundColor = color;
+            System.Console.Write(charcater);
+            System.Console.ResetColor();
+        }
+
 
         public static void Replace(int Char, Vector2 charAt)
         {
@@ -178,10 +275,11 @@ namespace Engine.ConsoleManager
 
         //Utility
 
-        public static void Remove(Vector2 charAt)
+        public static void Remove(Vector2 charAt, int layer = 0)
         {
             SetCursorPos(charAt);
             System.Console.WriteLine(" ");
+            Application.LayerManager.RemoveFromLayer(layer, charAt);
         }
 
         public static bool GetInput(ConsoleKey key)

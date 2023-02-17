@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Engine.Object;
+using Console = Engine.ConsoleManager.Console;
 
 namespace Engine.LevelManagement
 {
@@ -42,6 +43,18 @@ namespace Engine.LevelManagement
             foreach (var obj in RegisteredGameObjects)
             {
                 obj.Render();
+            }
+
+            foreach (var match in Application.LayerManager.FindOverlays())
+            {
+                if (match.Char1.Layer > match.Char2.Layer)
+                {
+                    Console.UnLoggedManualWrite(match.Char1.Char, match.Char1.Color, match.Char1.Pos);
+                }
+                else
+                {
+                    Console.UnLoggedManualWrite(match.Char2.Char, match.Char2.Color, match.Char2.Pos);
+                }
             }
         }
 
