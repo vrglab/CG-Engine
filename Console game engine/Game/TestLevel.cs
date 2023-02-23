@@ -17,7 +17,7 @@ namespace Game
             var obj = new TestGameObject();
             obj.transform.Position = new Vector2(6, 8);
             AddGameObject(obj);
-            Console.Write(12344, 1);
+            Console.Write(1234, 1);
         }
     }
 }

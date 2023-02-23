@@ -53,7 +53,8 @@ namespace Engine.ConsoleManager.Layering
                     {
                         foreach (var layer2Chars in layer2.Value.DrawnChar)
                         {
-                            if (layer1Chars.Pos == layer2Chars.Pos)
+                            if (layer1Chars.Pos == layer2Chars.Pos && layer1Chars != layer2Chars)
+
                             {
                                 result.Add(new MatchResult()
                                 {
@@ -128,6 +129,8 @@ namespace Engine.ConsoleManager.Layering
         public ConsoleColor Color { get;  }
         public int Layer { get; }
 
+        public Guid id { get;}
+
         public DrawChar(int Char, string text, Vector2 Pos, ConsoleColor color,int layer)
         {
             this.Char = Char;
@@ -135,6 +138,24 @@ namespace Engine.ConsoleManager.Layering
             this.Pos = Pos;
             Color = color;
             Layer = layer;
+            id = Guid.NewGuid();
+        }
+
+        public static bool operator ==(DrawChar left, DrawChar right)
+        {
+            if(left.id == right.id)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool operator !=(DrawChar left, DrawChar right)
+        {
+            if (left.id != right.id)
+            {
+                return true;
+            }
+            return false;
         }
     }
 
