@@ -54,7 +54,6 @@ namespace Engine.ConsoleManager.Layering
                         foreach (var layer2Chars in layer2.Value.DrawnChar)
                         {
                             if (layer1Chars.Pos == layer2Chars.Pos && layer1Chars != layer2Chars)
-
                             {
                                 result.Add(new MatchResult()
                                 {
