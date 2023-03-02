@@ -44,22 +44,7 @@ namespace Engine.LevelManagement
             {
                 obj.Render();
             }
-
-            var overlays = Application.LayerManager.FindOverlays();
-            if (overlays.Count > 0)
-            {
-                foreach (var match in overlays)
-                {
-                    if (match.Char1.Layer > match.Char2.Layer)
-                    {
-                        Console.UnLoggedManualWrite(match.Char1.Char, match.Char1.Color, match.Char1.Pos);
-                    }
-                    else
-                    {
-                        Console.UnLoggedManualWrite(match.Char2.Char, match.Char2.Color, match.Char2.Pos);
-                    }
-                }
-            }
+            Application.LayerManager.Render();
         }
 
         public virtual void Unload()
