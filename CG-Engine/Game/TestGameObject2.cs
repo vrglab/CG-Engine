@@ -15,10 +15,16 @@ namespace Game
         public override void Load()
         {
             base.Load();
-            CharacterRenderer cr = AddComponent<CharacterRenderer>();
-            cr.Charachter = 12644;
+            CharacterRenderer cr = new CharacterRenderer
+            {
+                gameobject = this
+            };
+            cr.Charachter = 1244;
             cr.Color = ConsoleColor.DarkBlue;
-            cr.OrderInLayer = -1;
-        }
+            cr.Layer= 0;
+            cr.OrderInLayer = 0;
+            cr.IsStationaryObject = true;
+            AddComponent(cr);
+         }
     }
 }

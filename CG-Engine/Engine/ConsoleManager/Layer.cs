@@ -70,19 +70,33 @@ namespace Engine.ConsoleManager.Layering
                         {
                             Console.Replace(item2.Value.Char, item2.Value.Color, item2.Value.LateLastPosition, item2.Value.LastPosition);
                         }
-                        DrawnPositions.Add(item.Value.LastPosition, new OverlayerResult()
+                        try
                         {
-                            cd1 = item.Value,
-                            cd2 = item2.Value
-                        });
+                            DrawnPositions.Add(item.Value.LastPosition, new OverlayerResult()
+                            {
+                                cd1 = item.Value,
+                                cd2 = item2.Value
+                            });
+                        } catch(Exception ex)
+                        {
+
+                        }
+                        
                     }
                     else
                     {
                         Console.Replace(item.Value.Char, item.Value.Color, item2.Value.LateLastPosition, item.Value.LastPosition);
-                        DrawnPositions.Add(item.Value.LastPosition, new OverlayerResult()
+                        try
                         {
-                            cd1 = item.Value
-                        });
+                            DrawnPositions.Add(item.Value.LastPosition, new OverlayerResult()
+                            {
+                                cd1 = item.Value
+                            });
+                        } catch (Exception e)
+                        {
+
+                        }
+                        
                     }
                 }
             }

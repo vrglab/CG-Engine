@@ -15,11 +15,13 @@ namespace Engine.Object.PremadeComponents
         public ConsoleColor Color { get; set; } = ConsoleColor.White;
         public int Layer { get => layer; set => layer = value; }
         public int OrderInLayer { get => orderInLayer; set => orderInLayer = value; }
+        public bool IsStationaryObject { get => stationary; set => stationary = value; }
 
         private Vector2 lastpos;
         private Vector2 Latelastpos;
         private int layer;
         private int orderInLayer;
+        private bool stationary;
 
         private bool render;
 
@@ -36,37 +38,32 @@ namespace Engine.Object.PremadeComponents
 
         public override void Update()
         {
-            if (gameobject.transform.Position != lastpos)
+          
+
+            if (stationary)
             {
                 Latelastpos = lastpos;
-                render = true;
-            }
-            else
-            {
-                render = false;
-            }
-            lastpos = gameobject.transform.Position;
-
-            if (lastpos.x >= 0 && lastpos.x > System.Console.BufferWidth)
-            {
-                gameobject.transform.Position = new Vector2(0, gameobject.transform.Position.y);
                 lastpos = gameobject.transform.Position;
-            } else if (lastpos.y >= 0 && lastpos.y > System.Console.BufferHeight)
-            {
-                gameobject.transform.Position = new Vector2(gameobject.transform.Position.x, System.Console.BufferHeight);
-                lastpos = gameobject.transform.Position;
-            }
 
+                var charData = new CharData()
+                {
+                    Char = Charachter,
+                    Color = Color,
+                    LastPosition = lastpos,
+                    LateLastPosition = Latelastpos
+                };
 
-            var charData = new CharData()
-            {
-                Char = Charachter,
-                Color = Color,
-                LastPosition = lastpos,
-                LateLastPosition = Latelastpos
-            };
-            if (render)
-            {
+                if (lastpos.x >= 0 && lastpos.x > System.Console.BufferWidth)
+                {
+                    gameobject.transform.Position = new Vector2(0, gameobject.transform.Position.y);
+                    lastpos = gameobject.transform.Position;
+                }
+                else if (lastpos.y >= 0 && lastpos.y > System.Console.BufferHeight)
+                {
+                    gameobject.transform.Position = new Vector2(gameobject.transform.Position.x, System.Console.BufferHeight);
+                    lastpos = gameobject.transform.Position;
+                }
+
                 if (Application.LayerManager.Layers.ContainsKey(layer))
                 {
                     if (!Application.LayerManager.Layers.GetValueOrDefault(layer).charsToBeDrawn.ContainsKey(orderInLayer))
@@ -77,15 +74,57 @@ namespace Engine.Object.PremadeComponents
             }
             else
             {
-                if (Application.LayerManager.Layers.ContainsKey(layer))
+                if (gameobject.transform.Position != lastpos)
                 {
-                    if (Application.LayerManager.Layers.GetValueOrDefault(layer).charsToBeDrawn.ContainsKey(orderInLayer))
+                    Latelastpos = lastpos;
+                    render = true;
+                }
+                else
+                {
+                    render = false;
+                }
+                lastpos = gameobject.transform.Position;
+
+                if (lastpos.x >= 0 && lastpos.x > System.Console.BufferWidth)
+                {
+                    gameobject.transform.Position = new Vector2(0, gameobject.transform.Position.y);
+                    lastpos = gameobject.transform.Position;
+                }
+                else if (lastpos.y >= 0 && lastpos.y > System.Console.BufferHeight)
+                {
+                    gameobject.transform.Position = new Vector2(gameobject.transform.Position.x, System.Console.BufferHeight);
+                    lastpos = gameobject.transform.Position;
+                }
+
+                var charData = new CharData()
+                {
+                    Char = Charachter,
+                    Color = Color,
+                    LastPosition = lastpos,
+                    LateLastPosition = Latelastpos
+                };
+
+                if (render)
+                {
+                    if (Application.LayerManager.Layers.ContainsKey(layer))
                     {
-                        Application.LayerManager.Layers.GetValueOrDefault(layer).charsToBeDrawn.Remove(orderInLayer);
+                        if (!Application.LayerManager.Layers.GetValueOrDefault(layer).charsToBeDrawn.ContainsKey(orderInLayer))
+                        {
+                            Application.LayerManager.Layers.GetValueOrDefault(layer).charsToBeDrawn.Add(orderInLayer, charData);
+                        }
+                    }
+                }
+                else
+                {
+                    if (Application.LayerManager.Layers.ContainsKey(layer))
+                    {
+                        if (Application.LayerManager.Layers.GetValueOrDefault(layer).charsToBeDrawn.ContainsKey(orderInLayer))
+                        {
+                            Application.LayerManager.Layers.GetValueOrDefault(layer).charsToBeDrawn.Remove(orderInLayer);
+                        }
                     }
                 }
             }
-
         }
 
         public override void Render()

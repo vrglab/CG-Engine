@@ -13,8 +13,6 @@ namespace Game
     {
         public override void Load()
         {
-            base.Load();
-
             var obj = new TestGameObject();
             obj.transform.Position = new Vector2(6, 8);
             AddGameObject(obj);
@@ -22,6 +20,7 @@ namespace Game
             var obj2 = new TestGameObject2();
             obj2.transform.Position = new Vector2(0, 0);
             AddGameObject(obj2);
+            base.Load();
         }
     }
 }
