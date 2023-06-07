@@ -44,7 +44,7 @@ namespace Engine.LevelManagement
             {
                 obj.Render();
             }
-            Application.LayerManager.Render();
+            Application.Renderer.Render();
         }
 
         public virtual void Unload()

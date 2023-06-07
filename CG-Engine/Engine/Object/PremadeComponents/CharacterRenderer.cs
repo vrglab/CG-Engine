@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Engine.ConsoleManager.Layering;
 using Engine.Mathmatics;
+using Engine.Renderer;
 using Console = Engine.ConsoleManager.Console;
 
 namespace Engine.Object.PremadeComponents
@@ -17,6 +18,8 @@ namespace Engine.Object.PremadeComponents
         public int OrderInLayer { get => orderInLayer; set => orderInLayer = value; }
         public bool IsStationaryObject { get => stationary; set => stationary = value; }
 
+        CharData charData = new CharData();
+
         private Vector2 lastpos;
         private Vector2 Latelastpos;
         private int layer;
@@ -27,7 +30,11 @@ namespace Engine.Object.PremadeComponents
 
         public override void Load()
         {
-            
+            charData.layer = new Layer()
+            {
+                id = layer,
+                order = orderInLayer
+            };
         }
 
         public override void Awake()
@@ -45,13 +52,10 @@ namespace Engine.Object.PremadeComponents
                 Latelastpos = lastpos;
                 lastpos = gameobject.transform.Position;
 
-                var charData = new CharData()
-                {
-                    Char = Charachter,
-                    Color = Color,
-                    LastPosition = lastpos,
-                    LateLastPosition = Latelastpos
-                };
+                charData.Char = Charachter;
+                charData.Color = Color;
+                charData.Position = lastpos;
+                charData.LastPosition = Latelastpos;
 
                 if (lastpos.x >= 0 && lastpos.x > System.Console.BufferWidth)
                 {
@@ -64,12 +68,9 @@ namespace Engine.Object.PremadeComponents
                     lastpos = gameobject.transform.Position;
                 }
 
-                if (Application.LayerManager.Layers.ContainsKey(layer))
+                if (!Application.Renderer.characters.ContainsKey(charData.id))
                 {
-                    if (!Application.LayerManager.Layers.GetValueOrDefault(layer).charsToBeDrawn.ContainsKey(orderInLayer))
-                    {
-                        Application.LayerManager.Layers.GetValueOrDefault(layer).charsToBeDrawn.Add(orderInLayer, charData);
-                    }
+                    Application.Renderer.registerForRender(charData);
                 }
             }
             else
@@ -96,32 +97,23 @@ namespace Engine.Object.PremadeComponents
                     lastpos = gameobject.transform.Position;
                 }
 
-                var charData = new CharData()
-                {
-                    Char = Charachter,
-                    Color = Color,
-                    LastPosition = lastpos,
-                    LateLastPosition = Latelastpos
-                };
+                charData.Char = Charachter;
+                charData.Color = Color;
+                charData.Position = lastpos;
+                charData.LastPosition = Latelastpos;
 
                 if (render)
                 {
-                    if (Application.LayerManager.Layers.ContainsKey(layer))
+                    if (!Application.Renderer.characters.ContainsKey(charData.id))
                     {
-                        if (!Application.LayerManager.Layers.GetValueOrDefault(layer).charsToBeDrawn.ContainsKey(orderInLayer))
-                        {
-                            Application.LayerManager.Layers.GetValueOrDefault(layer).charsToBeDrawn.Add(orderInLayer, charData);
-                        }
+                        Application.Renderer.registerForRender(charData);
                     }
                 }
                 else
                 {
-                    if (Application.LayerManager.Layers.ContainsKey(layer))
+                    if (Application.Renderer.characters.ContainsKey(charData.id))
                     {
-                        if (Application.LayerManager.Layers.GetValueOrDefault(layer).charsToBeDrawn.ContainsKey(orderInLayer))
-                        {
-                            Application.LayerManager.Layers.GetValueOrDefault(layer).charsToBeDrawn.Remove(orderInLayer);
-                        }
+                        Application.Renderer.characters.Remove(charData.id);
                     }
                 }
             }
