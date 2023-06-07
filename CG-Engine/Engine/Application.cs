@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Engine.ConsoleManager;
-using Engine.ConsoleManager.Layering;
 using Engine.LevelManagement;
 using Engine.Renderer;
 using Console = Engine.ConsoleManager.Console;

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Engine.ConsoleManager.Layering;
 using Engine.Mathmatics;
 using Engine.Renderer;
 using Console = Engine.ConsoleManager.Console;
