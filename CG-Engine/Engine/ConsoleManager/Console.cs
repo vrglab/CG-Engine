@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using Engine.ConsoleManager.Layering;
 using Engine.Mathmatics;
 
 namespace Engine.ConsoleManager
