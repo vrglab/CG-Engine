@@ -20,7 +20,7 @@ namespace Game
                 gameobject = this
             };
             cr.Layer = 0;
-            cr.OrderInLayer = 1;
+            cr.OrderInLayer = -1;
             AddComponent(cr);
 
             /*AddComponent(new AudioPlayer("Audio file")

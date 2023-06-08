@@ -12,8 +12,13 @@ namespace Engine.Renderer
         private Dictionary<Guid, CharData> Drawncharacters = new Dictionary<Guid, CharData>();
         public void registerForRender(CharData data)
         {
+            Console.WriteLine(data.id.ToString());
             if(!characters.ContainsKey(data.id))
             {
+                characters.Add(data.id, data);
+            } else
+            {
+                characters.Remove(data.id);
                 characters.Add(data.id, data);
             }
         }
@@ -46,7 +51,8 @@ namespace Engine.Renderer
                                 }
                                 else
                                 {
-
+                                    Draw(charData2);
+                                    Drawncharacters.Remove(item.Key);
                                 }
                             }
                         }
@@ -78,9 +84,8 @@ namespace Engine.Renderer
     {
         public CharData()
         {
-            id = Guid.NewGuid();
         }
-        public Guid id { get; }
+        public Guid id { get; init; } = Guid.NewGuid();
         public int Char { get; set; } = 65533;
         public Layer layer { get; set; } = default;
         public ConsoleColor Color { get; set; } = ConsoleColor.White;

@@ -29,6 +29,7 @@ namespace Engine.Object.PremadeComponents
 
         public override void Load()
         {
+            charData = new CharData();
             charData.layer = new Layer()
             {
                 id = layer,
@@ -44,8 +45,6 @@ namespace Engine.Object.PremadeComponents
 
         public override void Update()
         {
-          
-
             if (stationary)
             {
                 Latelastpos = lastpos;
@@ -79,10 +78,6 @@ namespace Engine.Object.PremadeComponents
                     Latelastpos = lastpos;
                     render = true;
                 }
-                else
-                {
-                    render = false;
-                }
                 lastpos = gameobject.transform.Position;
 
                 if (lastpos.x >= 0 && lastpos.x > System.Console.BufferWidth)
@@ -101,19 +96,9 @@ namespace Engine.Object.PremadeComponents
                 charData.Position = lastpos;
                 charData.LastPosition = Latelastpos;
 
-                if (render)
+                if (!Application.Renderer.characters.ContainsKey(charData.id))
                 {
-                    if (!Application.Renderer.characters.ContainsKey(charData.id))
-                    {
-                        Application.Renderer.registerForRender(charData);
-                    }
-                }
-                else
-                {
-                    if (Application.Renderer.characters.ContainsKey(charData.id))
-                    {
-                        Application.Renderer.characters.Remove(charData.id);
-                    }
+                    Application.Renderer.registerForRender(charData);
                 }
             }
         }

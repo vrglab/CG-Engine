@@ -104,6 +104,11 @@ namespace Engine.Object
             {
                 comp.Update();
             }
+
+            if(transform.Position.x < 0)
+            {
+                transform.Position = new Mathmatics.Vector2(0, transform.Position.y);   
+            }
         }
 
         public virtual void Render()
